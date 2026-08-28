@@ -1,102 +1,12 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#061b46">
-<title>NOIR STRANDS — The Wig Wardrobe</title>
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<div class="top-notice">As a creator or an influencer, scroll directly to the bottom where you can submit an application and we will reach out to you as soon as we can. Thank you so much, lovelies.</div>
-<header class="site-header">
-  <a class="brand" href="#top"><span class="brand-mark">N</span><span>NOIR STRANDS</span></a>
-  <div class="header-tools">
-    <label class="search"><span>⌕</span><input id="searchInput" placeholder="Search 20 wig types" aria-label="Search wigs"></label>
-    <button class="icon-btn" id="wishlistBtn" aria-label="Saved looks">♡<b id="wishCount">0</b></button>
-    <button class="icon-btn" id="cartBtn" aria-label="Cart">▢<b id="cartCount">0</b></button>
-  </div>
-  <button class="menu-btn" id="menuBtn">☰</button>
-</header>
-<nav class="mobile-nav" id="mobileNav">
-  <a href="#collection">The Wig Wardrobe</a><a href="#features">Signature Looks</a><a href="#checkout">Checkout</a><a href="#application">Creator Application</a>
-</nav>
-<main id="top">
-<section class="hero-wrap">
-  <div class="hero-card">
-    <div class="hero-image"><img src="assets/hero.jpg" alt="Noir Strands model wearing a signature look"></div>
-    <div class="hero-copy">
-      <span class="eyebrow">MEET THE WOMAN BEHIND THE LOOKS</span>
-      <h1>Hair is the crown. I make every version of you unforgettable.</h1>
-      <p>Created with intention for women who believe beautiful hair should feel personal, powerful, and completely yours. Discover luxury textures, flawless construction, and signature styles.</p>
-      <p class="small-note">Prices shown are starting points. Build your cart, screenshot your selections, and send them to our accounts below for your final discounted quote.</p>
-      <p class="contact-inline"><strong>TikTok:</strong> @noirstrands<br><strong>Email:</strong> noirstrands5@gmail.com</p>
-      <a class="pill-btn" href="#collection">Explore my collection ↘</a>
-    </div>
-  </div>
-</section>
-<section class="feature-stack" id="features">
-  <article class="feature-card">
-    <img src="assets/straight-bob.jpg" alt="Straight Bob wig">
-    <div><span class="eyebrow">THE SIGNATURE BOB</span><h2>Straight Bob</h2><p>Sleek lines, polished movement, and effortless confidence. Discover the modern bob made for every entrance.</p><div class="feature-bottom"><strong>$450</strong><button class="pill-btn" data-feature="Straight Bob">Shop Now ↘</button></div></div>
-  </article>
-  <article class="feature-card">
-    <img src="assets/body-wave.jpg" alt="Layered Body Wave wig">
-    <div><span class="eyebrow">THE WAVE EDIT</span><h2>Layered Body Wave</h2><p>Effortless volume and soft movement, beautifully shaped for every entrance.</p><div class="feature-bottom"><strong>$400</strong><button class="pill-btn" data-feature="Layered Body Wave">Shop Now ↘</button></div></div>
-  </article>
-</section>
-<section class="collection" id="collection">
-  <div class="section-heading"><span class="eyebrow">CURATED FOR YOUR NEXT TRANSFORMATION</span><h2>The wig wardrobe</h2><p>Showing <span id="resultCount">1–20</span> of 20 styles · 20 total wig types</p></div>
-  <button class="reset" id="resetFilters">Reset filters</button>
-  <div class="chips" id="chips"></div>
-  <div class="filters">
-    <label>LENGTH<select id="lengthFilter"><option>Any length</option><option>8 inch</option><option>12 inch</option><option>16 inch</option><option>20 inch</option><option>24 inch</option><option>30 inch</option></select></label>
-    <label>TEXTURE<select id="textureFilter"><option>Any texture</option><option>Pixie Cut</option><option>Pixie Curls</option><option>Bone Straight</option><option>Body Wave</option><option>Deep Wave</option><option>Water Wave</option><option>Loose Wave</option><option>Deep Curly</option><option>Afro Kinky</option><option>Straight Bob</option></select></label>
-    <label>COLOR<select id="colorFilter"><option>Any color</option><option>Natural Black</option><option>Espresso</option><option>Honey Blonde</option><option>Burgundy</option><option>Pink</option><option>Blonde</option></select></label>
-    <label>LACE TYPE<select id="laceFilter"><option>Any lace type</option><option>HD Lace</option><option>Transparent Lace</option><option>4x4 Closure</option><option>5x5 Closure</option><option>13x4 Lace Front</option></select></label>
-  </div>
-  <div class="product-grid" id="productGrid"></div>
-</section>
-<section class="checkout" id="checkout">
-  <div class="checkout-card">
-    <span class="eyebrow">LUXURY, ALL THE WAY THROUGH</span>
-    <h2>A polished checkout for your new signature look.</h2>
-    <p>Build your bag, review your order, and choose Apple Pay, card, or another preferred payment method when you are ready to check out.</p>
-    <div class="price-note"><strong>Once again lovelies, prices on here are not fixed.</strong><br>Shop your items here, Screenshot your cart and send to our accounts below<br><strong>TikTok: @noirstrands</strong><br><strong>Email: noirstrands5@gmail.com</strong><br>our admin would get back to you with the perfect discounted prices.</div>
-    <div class="contact-row"><span>TikTok: @noirstrands</span><span>Email: noirstrands5@gmail.com</span></div>
-    <div class="pay-methods"><div>▯<small>Apple Pay</small></div><div>▭<small>Card</small></div><div>▤<small>More</small></div></div>
-  </div>
-</section>
-<section class="application" id="application">
-  <div class="welcome">WELCOME LOVELIES</div>
-  <form id="creatorForm" class="application-card">
-    <h2>Creator application</h2>
-    <label>1. First and last name *<input name="name" required placeholder="First and last name"></label>
-    <label>2. Email address *<input type="email" name="email" required placeholder="Email address"></label>
-    <label>3. Home address for shipping *<textarea name="address" required placeholder="Home address for shipping"></textarea></label>
-    <label>4. Phone number *<input name="phone" required placeholder="Phone number"></label>
-    <label>5. TikTok username *<input name="tiktok" required placeholder="TikTok username"></label>
-    <fieldset><legend>6. Salary allowance *</legend><label class="choice"><input type="radio" name="salary" value="Weekly" required> Weekly</label><label class="choice"><input type="radio" name="salary" value="Monthly"> Monthly</label></fieldset>
-    <label>7. Who referred you? *<input name="referral" required placeholder="Who referred you?"></label>
-    <fieldset><legend>8. Any previous experience? *</legend><label class="choice"><input type="radio" name="experience" value="Yes" required> Yes</label><label class="choice"><input type="radio" name="experience" value="No"> No</label></fieldset>
-    <fieldset><legend>9. How’d you like to receive payment? *</legend><label class="choice"><input type="radio" name="payment" value="Paycheck" required> Paycheck</label></fieldset>
-    <fieldset><legend>10. Banking options we accept *</legend><label class="choice"><input type="radio" name="banking" value="Local banks" required> Local banks</label><label class="choice"><input type="radio" name="banking" value="Credit Union"> Credit Union</label><label class="choice"><input type="radio" name="banking" value="Both"> Both</label></fieldset>
-    <label>11. Local bank or credit union name *<input name="bank_name" required placeholder="Local bank or credit union name"></label>
-    <label>12. Mention 3 preferred hairs and colors *<textarea name="preferred_hair" required placeholder="Mention 3 preferred hairs and colors"></textarea></label>
-    <fieldset><legend>13. By posting our brand items, you agree to use only approved materials in their original form, give clear credit to our brand, and use them solely for promotional purposes. Do not imply endorsement, share sensitive content, or use our items inappropriately. We reserve the right to revoke usage at any time, and posting signifies your agreement to these terms. *</legend><label class="choice"><input type="radio" name="posting_terms" value="Yes" required> Yes</label><label class="choice"><input type="radio" name="posting_terms" value="No"> No</label></fieldset>
-    <label>14. Why are you the best fit for us? *<textarea name="why" required placeholder="Why are you the best fit for us?"></textarea></label>
-    <div class="understand-copy"><strong>15. READ AND UNDERSTAND!</strong><p>We don’t want you to use any of your money to pay for the wigs or pay for shipping, it’s 100% free for you as the influencer. So we would take care of all the payments without hesitation, the payment we would send would include your first week payment and the funds for the hairs and shipping from the distributor, that way you don’t have to use your money for any expenses, once you get paid you’ll be updated on how you’ll clear the payment for the wigs and get it shipped to your provided address, if anyone asks you to send any of your money it’s definitely A SCAM! DON’T FALL FOR IT!</p></div>
-    <fieldset><legend>DO YOU UNDERSTAND? *</legend><label class="choice"><input type="radio" name="understand" value="Yes" required> Yes</label><label class="choice"><input type="radio" name="understand" value="No"> No</label></fieldset>
-    <label>16. Do you have any questions? If you do, write it out here.<textarea name="questions" placeholder="Do you have any questions? If you do, write it out here."></textarea></label>
-    <button class="submit-btn" type="submit">Submit application</button>
-    <p class="form-status" id="formStatus"></p>
-  </form>
-</section>
-<section class="saved" id="saved"><h2>Saved looks</h2><p>Your favorite styles will appear here. Tap ♡ on any wig to save it.</p><div id="savedGrid" class="saved-grid"></div></section>
-<footer><div><strong>NOIR STRANDS</strong><p>Luxury wigs. Signature transformations.</p></div><div><a href="#collection">Shop</a><a href="#application">Creators</a><a href="mailto:noirstrands5@gmail.com">Email</a><a href="https://www.tiktok.com/@noirstrands">TikTok</a></div><small>© 2026 Noir Strands. All rights reserved.</small></footer>
-</main>
-<aside class="cart-drawer" id="cartDrawer"><div class="drawer-head"><h2>Your bag</h2><button id="closeCart">×</button></div><div id="cartItems"></div><div class="cart-total"><span>Estimated total</span><strong id="cartTotal">$0</strong></div><button class="submit-btn" id="checkoutCart">Review checkout</button></aside>
-<div class="overlay" id="overlay"></div>
-<script src="script.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NOIR STRANDS</title><link rel="stylesheet" href="styles.css"></head><body>
+<div class="creator-bar">As a creator or an influencer, you should scroll directly to the bottom where you can submit an application and we would reach out to you as soon as we can. Thank you so much, lovelies.</div>
+<header><div class="brand"><span class="brand-mark">N</span><strong>NOIR STRANDS</strong></div><div class="header-actions"><input id="search" placeholder="Search 20 wig types"><button id="savedBtn">♡ <span id="savedCount">0</span></button><button id="cartBtn">🛍 <span id="cartCount">0</span></button><button class="menu">☰</button></div></header>
+<main>
+<section class="hero"><img src="hero.jpg"><div class="hero-overlay"><small>MEET THE WOMAN BEHIND THE LOOKS</small><h1>Hair is the crown. I make every version of you unforgettable.</h1><p>Created with intention by a Black woman who believes beautiful hair should feel personal, powerful, and completely yours. Discover luxury texture, flawless construction, and signature styles.</p><p class="contact-copy">Hey lovelies note that prices on here are not fixed. Shop your items here, Screenshot your cart and send to our accounts below<br>Tiktok: @noirstrands<br>Email: noirstrands5@gmail.com</p><button class="primary" onclick="document.getElementById('wardrobe').scrollIntoView()">Explore my collection ↘</button></div></section>
+<section class="featured"><article><img src="loose-deep-1.jpg"><img src="loose-deep-2.jpg"><small>THE FEATURED TEXTURE</small><h2>Loose Deep Waves</h2><p>Soft movement, deep definition, and effortless volume. Meet the signature texture made to turn every entrance into a moment.</p><b>$500</b> <button class="primary">Shop Loose Deep Waves ↗</button></article><article><img src="layered-body-wave.jpg"><small>THE LAYERED EDIT</small><h2>Layered Body Wave</h2><p>Polished layers, sleek movement, and a flattering silhouette for your next signature look.</p><b>$350</b> <button class="primary">Shop Now ↗</button></article></section>
+<section id="wardrobe" class="wardrobe"><div class="section-head"><small>CURATED FOR YOUR NEXT HAIR TRANSFORMATION</small><h2>The wig wardrobe</h2><p>Showing 1–20 of 20 wig types</p></div><button class="filter-toggle" id="filterToggle">Reset filters</button><div id="chips" class="chips"></div><div class="filters"><label>LENGTH<select><option>Any length</option><option>8 inch</option><option>12 inch</option><option>16 inch</option><option>20 inch</option><option>24 inch</option><option>30 inch</option></select></label><label>TEXTURE<select><option>Any texture</option></select></label><label>COLOR<select><option>Any color</option><option>Natural Black</option><option>Pink</option><option>Blonde</option><option>Burgundy</option></select></label><label>LACE TYPE<select><option>Any lace type</option><option>HD Lace</option><option>Transparent Lace</option><option>4x4 Closure</option><option>13x4 Lace Front</option></select></label><label>PRICE<select><option>Any price</option><option>Under $250</option><option>$250–$400</option><option>$400+</option></select></label></div><div id="products" class="products"></div></section>
+<section class="checkout"><small>LUXURY, ALL THE WAY THROUGH</small><h2>A polished checkout for your new signature look.</h2><p>Build your bag, review your order, and choose Apple Pay, card, or another preferred payment method when you are ready to check out.</p><div class="notice"><strong>Once again lovelies, prices on here are not fixed. Shop your items here, Screenshot your cart and send to our accounts below<br>Tiktok: @noirstrands<br>Email: noirstrands5@gmail.com<br>our admin would get back to you with the perfect discounted prices.</strong></div><p><b>TikTok: @noirstrands</b><br><b>Email: noirstrands5@gmail.com</b></p><div class="pay"><span>📱<br>Apple Pay</span><span>▣<br>Card</span><span>✉<br>More</span></div></section>
+<section id="apply" class="application"><div class="welcome">WELCOME LOVELIES</div><h2>Creator application</h2><label>1. First and last name*<input placeholder="First and last name"></label><label>2. Email address*<input type="email" placeholder="Email address"></label><label>3. Phone number*<input placeholder="Phone number"></label><label>4. TikTok username*<input placeholder="TikTok username"></label><label>6. Salary allowance*<div class="choice"><button>● Weekly</button><button>○ Monthly</button></div></label><label>7. Who referred you?<input placeholder="Who referred you?"></label><label>8. Any previous experience?*<div class="choice"><button>○ Yes</button><button>○ No</button></div></label><label>9. How you'd like to receive payment?*<div class="choice"><button>○ Paycheck</button></div></label><label>10. Banking options we accept*<div class="choice"><button>○ Local banks</button><button>○ Credit Union</button></div></label><label>15. Do you understand?*<div class="choice"><button>○ Yes</button><button>○ No</button></div></label><label>16. Do you have any questions? If you do, write it out<textarea placeholder="Do you have any questions? If you do, write it out here."></textarea></label><button class="submit">Submit application</button></section>
+</main><footer>Heritage Tresses — replaced with NOIR STRANDS · Terms & Support · Privacy Policy</footer>
+<div id="cartDrawer" class="drawer"><button class="close">×</button><h2>Your cart</h2><div id="cartItems"></div><p id="cartTotal"></p></div><div id="savedDrawer" class="drawer saved"><button class="close">×</button><h2>Saved looks</h2><p>Your favorite styles, all in one place.</p><div id="savedItems"></div></div>
+<script src="script.js"></script></body></html>
