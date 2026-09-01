@@ -9,37 +9,3 @@ window.addCart=(i,filter)=>{let p=currentList(filter)[i];cart.push(p);localStora
 function update(){document.querySelector('#cartCount').textContent=cart.length;document.querySelector('#savedCount').textContent=saved.length;document.querySelector('#cartItems').innerHTML=cart.map((p,i)=>`<div class="cart-row"><span>${p[1]}</span><b>$${p[2]}</b></div>`).join('')||'<p>Your bag is empty.</p>';document.querySelector('#cartTotal').textContent=cart.length?'Items selected: '+cart.length:''}
 function open(id){document.querySelector(id).classList.add('open')}function closeAll(){document.querySelectorAll('.drawer').forEach(x=>x.classList.remove('open'))}
 document.querySelector('#cartBtn').onclick=()=>open('#cartDrawer');document.querySelector('#savedBtn').onclick=()=>open('#savedDrawer');document.querySelectorAll('.close').forEach(b=>b.onclick=closeAll);document.querySelector('#search').oninput=()=>render();document.querySelector('#filterToggle').onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));document.querySelector('.chip').classList.add('active');render()};render();update();
-
-// Submit the Creator Application through Formspree in the background so we can
-// send the applicant to the Noir Strands thank-you page without requiring a
-// paid Formspree redirect setting.
-const applicationForm=document.querySelector('#apply form');
-if(applicationForm){
-  applicationForm.addEventListener('submit',async(e)=>{
-    e.preventDefault();
-    const button=applicationForm.querySelector('.submit');
-    const originalText=button.textContent;
-    button.disabled=true;
-    button.textContent='Submitting…';
-    try{
-      const response=await fetch(applicationForm.action,{
-        method:'POST',
-        headers:{'Accept':'application/json'},
-        body:new FormData(applicationForm)
-      });
-      if(response.ok){
-        window.location.href='https://noirstrands.github.io/noir-strands/thank-you.html';
-      }else{
-        let message='We could not submit your application. Please try again.';
-        try{const data=await response.json();if(data?.errors?.length)message=data.errors.map(x=>x.message).join(' ')}catch(_){}
-        alert(message);
-        button.disabled=false;
-        button.textContent=originalText;
-      }
-    }catch(_){
-      alert('There was a connection problem. Please check your internet connection and try again.');
-      button.disabled=false;
-      button.textContent=originalText;
-    }
-  });
-}
