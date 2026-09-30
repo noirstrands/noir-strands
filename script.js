@@ -9,23 +9,3 @@ window.addCart=(i,filter)=>{let p=currentList(filter)[i];cart.push(p);localStora
 function update(){document.querySelector('#cartCount').textContent=cart.length;document.querySelector('#savedCount').textContent=saved.length;document.querySelector('#cartItems').innerHTML=cart.map((p,i)=>`<div class="cart-row"><span>${p[1]}</span><b>$${p[2]}</b></div>`).join('')||'<p>Your bag is empty.</p>';document.querySelector('#cartTotal').textContent=cart.length?'Items selected: '+cart.length:''}
 function open(id){document.querySelector(id).classList.add('open')}function closeAll(){document.querySelectorAll('.drawer').forEach(x=>x.classList.remove('open'))}
 document.querySelector('#cartBtn').onclick=()=>open('#cartDrawer');document.querySelector('#savedBtn').onclick=()=>open('#savedDrawer');document.querySelectorAll('.close').forEach(b=>b.onclick=closeAll);document.querySelector('#search').oninput=()=>render();document.querySelector('#filterToggle').onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));document.querySelector('.chip').classList.add('active');render()};render();update();
-
-
-/* Creator application: submit to Apps Script in a hidden frame, then show the branded thank-you page. */
-const creatorForm=document.querySelector('.application form');
-if(creatorForm){
-  const frame=document.createElement('iframe');
-  frame.name='creatorSubmissionFrame';
-  frame.title='Application submission';
-  frame.style.display='none';
-  document.body.appendChild(frame);
-  creatorForm.target='creatorSubmissionFrame';
-  creatorForm.addEventListener('submit',()=>{
-    const submitButton=creatorForm.querySelector('button[type="submit"]');
-    if(submitButton){
-      submitButton.disabled=true;
-      submitButton.textContent='Submitting...';
-    }
-    setTimeout(()=>{ window.location.href='./thanks.html'; },2500);
-  });
-}
