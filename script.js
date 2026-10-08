@@ -11,7 +11,7 @@ const products=[
 ['Burmese Curly','Burmese Curly',229,'Espresso','12 inch','HD Lace','burmese-curly.jpg'],
 ['Deep Curly','Deep Curly',337,'Pink','24 inch','5x5 Closure','deep-curly.jpg'],
 ['Afro Kinky','Afro Kinky',150,'Blonde','30 inch','13x4 Lace Front','afro-kinky.jpg'],
-['Layered Straight','Layered Straight',245,'Natural Black','20 inch','HD Lace','source-frame5.jpg'],
+['Layered Straight','Layered Straight',245,'Natural Black','20 inch','HD Lace','loose-deep-2.jpg'],
 ['Layered Body Wave','Layered Body Wave',339,'Natural Black','20 inch','Transparent Lace','layered-body-wave.jpg']
 ];
 const cats=['All styles','Pixie Cut','Pixie Curls','Bone Straight','Body Wave','Deep Wave','Water Wave','Loose Wave','Kinky Curly','Kinky Straight','Jerry Curl','Loose Deep Waves','Straight Bob','Curly Bob','Burmese Curly','Bob Wig','Jerry Straight','Deep Curly','Afro Kinky'];
