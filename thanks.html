@@ -2,49 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070707">
 <title>Thank You | NOIR STRANDS</title>
-<link rel="stylesheet" href="styles.css?v=4">
 <style>
-:root{--gold:#c8a95b;--gold2:#f2d98a;--black:#050505;--cream:#f7f3ea}
-*{box-sizing:border-box}
-body{margin:0;background:var(--black);color:var(--cream);font-family:Arial,Helvetica,sans-serif}
-.thanks-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px;background:radial-gradient(circle at 50% 0,#332711 0,#171208 25%,#080808 62%,#020202 100%)}
-.thanks-card{width:min(700px,100%);overflow:hidden;position:relative;border:1px solid rgba(200,169,91,.72);border-radius:30px;background:#0b0b0b;box-shadow:0 30px 100px rgba(0,0,0,.8),0 0 70px rgba(200,169,91,.1);text-align:center}
-.thanks-image{height:350px;position:relative;overflow:hidden}
-.thanks-image img{width:100%;height:100%;object-fit:cover;object-position:center}
-.thanks-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 15%,rgba(0,0,0,.2) 48%,#0b0b0b 100%)}
-.logo-lockup{position:absolute;left:0;right:0;bottom:30px;z-index:2;display:flex;flex-direction:column;align-items:center;color:#fff;text-shadow:0 4px 22px #000}
-.logo-mark{width:58px;height:58px;border:2px solid var(--gold2);border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 34px/1 Georgia,serif;color:var(--gold2);margin-bottom:12px;background:rgba(5,5,5,.48);box-shadow:0 0 25px rgba(200,169,91,.22)}
-.logo-name{font:700 31px/1 Georgia,"Times New Roman",serif;letter-spacing:6px}
-.logo-tag{margin-top:9px;font-size:9px;letter-spacing:3px;color:var(--gold2)}
-.thanks-content{padding:0 34px 42px}
-.badge{display:inline-block;padding:9px 17px;border:1px solid rgba(200,169,91,.6);border-radius:999px;color:var(--gold2);font-size:10px;letter-spacing:2.8px;font-weight:700}
-.thanks-content h1{font:700 42px/1.08 Georgia,"Times New Roman",serif;margin:20px 0 14px;color:#fff}
-.thanks-content p{max-width:530px;margin:0 auto 26px;color:#c9c1b0;line-height:1.75;font-size:15px}
-.primary{display:inline-block;text-decoration:none}
-.thanks-note{margin-top:22px!important;margin-bottom:0!important;font-size:10px!important;letter-spacing:2.5px;text-transform:uppercase;color:#8f866f!important}
-@media(max-width:520px){.thanks-image{height:290px}.logo-mark{width:50px;height:50px;font-size:29px}.logo-name{font-size:23px;letter-spacing:4px}.logo-tag{font-size:8px;letter-spacing:2px}.thanks-content{padding:0 22px 32px}.thanks-content h1{font-size:34px}}
+:root{--gold:#c8a45a;--gold-light:#f0d995;--cream:#f7f2e8;--muted:#c8c0b1;--black:#070707}
+*{box-sizing:border-box}html,body{min-height:100%;margin:0}
+body{min-height:100vh;background:var(--black);color:var(--cream);font-family:Arial,Helvetica,sans-serif}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 18px;background:radial-gradient(ellipse at 50% 32%,#211b10 0%,#11100d 32%,#070707 72%)}
+.card{position:relative;width:min(680px,100%);padding:clamp(34px,7vw,68px) clamp(22px,6vw,58px);text-align:center;border:1px solid rgba(200,164,90,.62);background:linear-gradient(145deg,rgba(20,19,16,.96),rgba(7,7,7,.98));box-shadow:0 24px 90px rgba(0,0,0,.65),inset 0 0 45px rgba(200,164,90,.035)}
+.card:before,.card:after{content:"";position:absolute;width:42px;height:42px;pointer-events:none}
+.card:before{top:12px;left:12px;border-top:1px solid var(--gold);border-left:1px solid var(--gold)}
+.card:after{right:12px;bottom:12px;border-right:1px solid var(--gold);border-bottom:1px solid var(--gold)}
+.logo{display:flex;flex-direction:column;align-items:center;margin:0 auto 36px}
+.logo-mark{width:clamp(100px,22vw,136px);height:clamp(100px,22vw,136px);display:flex;align-items:center;justify-content:center;border:1px solid var(--gold-light);outline:1px solid rgba(240,217,149,.35);outline-offset:7px;border-radius:50%;color:var(--gold-light);font:italic 700 clamp(66px,13vw,88px)/1 Georgia,"Times New Roman",serif;text-shadow:0 0 28px rgba(240,217,149,.18);margin-bottom:27px}
+.wordmark{font:700 clamp(23px,5vw,32px)/1.2 Georgia,"Times New Roman",serif;letter-spacing:clamp(4px,1.3vw,8px);padding-left:8px;color:#fff}
+.tagline{margin-top:12px;color:var(--gold-light);font-size:9px;letter-spacing:clamp(2px,.7vw,3.5px);text-transform:uppercase}
+.rule{width:54px;height:1px;background:var(--gold);margin:0 auto 27px}
+.eyebrow{color:var(--gold-light);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+h1{margin:17px 0 16px;color:#fff;font:400 clamp(34px,7vw,49px)/1.1 Georgia,"Times New Roman",serif}
+p{max-width:490px;margin:0 auto 18px;color:var(--muted);font-size:15px;line-height:1.85}
+.home{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:15px;padding:0 25px;border:1px solid var(--gold);background:var(--gold);color:#090909;text-decoration:none;text-transform:uppercase;font-size:11px;font-weight:800;letter-spacing:1.5px;transition:background .2s,color .2s}
+.home:hover{background:transparent;color:var(--gold-light)}
+.footer{margin-top:35px;color:#777064;font-size:9px;letter-spacing:2.5px;text-transform:uppercase}
+@media(max-width:420px){.logo{margin-bottom:29px}.tagline{line-height:1.7}.card:before,.card:after{width:27px;height:27px}.footer{letter-spacing:1.5px}}
 </style>
 </head>
 <body>
-<main class="thanks-page">
-<section class="thanks-card">
-<div class="thanks-image">
-<img src="deep-wave.jpg" alt="NOIR STRANDS luxury hair">
-<div class="logo-lockup">
-<div class="logo-mark">N</div>
-<div class="logo-name">NOIR STRANDS</div>
-<div class="logo-tag">LUXURY HAIR • CONFIDENCE • SIGNATURE STYLE</div>
-</div>
-</div>
-<div class="thanks-content">
-<div class="badge">APPLICATION RECEIVED</div>
-<h1>Welcome to the NOIR STRANDS family.</h1>
-<p>Your creator application has been received successfully. Thank you for choosing to connect with NOIR STRANDS. Our team will carefully review your application and contact you with the next steps.</p>
-<a class="primary" href="https://noirstrands.github.io/noir-strands/">Return to NOIR STRANDS</a>
-<p class="thanks-note">Luxury, individuality &amp; effortless style</p>
-</div>
+<main class="page">
+<section class="card" aria-labelledby="thankYouTitle">
+  <div class="logo" aria-label="NOIR STRANDS logo">
+    <div class="logo-mark" aria-hidden="true">N</div>
+    <div class="wordmark">NOIR STRANDS</div>
+    <div class="tagline">Luxury Hair · Confidence · Signature Style</div>
+  </div>
+  <div class="rule" aria-hidden="true"></div>
+  <div class="eyebrow">Application received</div>
+  <h1 id="thankYouTitle">Thank you, lovely.</h1>
+  <p>Thank you for applying to become a NOIR STRANDS creator. We appreciate your interest in being part of our brand.</p>
+  <p>Our team will review your application and contact you if you are selected for the next steps.</p>
+  <a class="home" href="./">Return to NOIR STRANDS</a>
+  <div class="footer">Made with intention · NOIR STRANDS</div>
 </section>
 </main>
 </body>
