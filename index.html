@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NOIR STRANDS</title>
 <link rel="stylesheet" href="styles.css?v=4">
+<style>.application-status{min-height:1.4em;margin:10px 0 0;color:#d9c48b;font-size:13px;line-height:1.5;text-align:center}.submit:disabled{opacity:.72;cursor:wait}</style>
 </head>
 <body>
 
@@ -130,6 +131,7 @@
     <label>13. Mention 3 preferred hairs and colors *<textarea name="preferred_hairs_colors" required placeholder="Mention 3 preferred hairs and colors"></textarea></label>
     <label>14. Do you have any questions? If you do, write it out here.<textarea name="questions" placeholder="Do you have any questions? If you do, write it out here."></textarea></label>
 
+    <p id="applicationStatus" class="application-status" aria-live="polite"></p>
     <button class="submit" type="submit">Submit application</button>
   </form>
 </section>
@@ -156,46 +158,48 @@
 <script>
 (function () {
   const form = document.getElementById("creatorForm");
-  const section = document.getElementById("apply");
   const frame = document.getElementById("hiddenSubmitFrame");
 
-  if (!form || !section || !frame) return;
+  if (!form || !frame) return;
 
-  let submitted = false;
-  let timeoutId;
+  let isSubmitting = false;
+  let responseTimeout;
+
+  // Ignore the iframe's initial blank-page load. Redirect after the form
+  // submission has started and a response has loaded into the iframe.
+  frame.addEventListener("load", function () {
+    if (!isSubmitting) return;
+    isSubmitting = false;
+    clearTimeout(responseTimeout);
+    window.location.href = "./thanks.html";
+  });
 
   form.addEventListener("submit", function () {
     const button = form.querySelector(".submit");
+    const status = document.getElementById("applicationStatus");
 
-    // The form submits to the hidden iframe, not the main page.
-    submitted = true;
+    isSubmitting = true;
     button.disabled = true;
     button.textContent = "Submitting application...";
 
-    // Fallback presentation only. This does not confirm server receipt.
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(showThankYou, 1500);
+    if (status) {
+      status.textContent = "Submitting your application. Please keep this page open.";
+      status.setAttribute("role", "status");
+    }
+
+    // Avoid falsely confirming success if the response never arrives.
+    clearTimeout(responseTimeout);
+    responseTimeout = setTimeout(function () {
+      if (!isSubmitting) return;
+      isSubmitting = false;
+      button.disabled = false;
+      button.textContent = "Submit application";
+      if (status) {
+        status.textContent = "We couldn't confirm that your application was submitted. Please check your internet connection and try again.";
+        status.setAttribute("role", "alert");
+      }
+    }, 30000);
   });
-
-  function showThankYou() {
-    if (!submitted || !document.body.contains(form)) return;
-
-    section.innerHTML = `
-      <div style="min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center;padding:70px 25px;background:radial-gradient(circle at center,#181818 0%,#080808 55%,#000 100%);color:#fff">
-        <div style="max-width:650px;width:100%">
-          <div style="color:#c9a24d;letter-spacing:7px;font-size:14px;margin-bottom:22px">NOIR STRANDS</div>
-          <div style="width:45px;height:2px;background:#c9a24d;margin:0 auto 30px"></div>
-          <h2 style="font-family:Georgia,serif;font-size:36px;font-weight:400;margin:0 0 18px;color:#fff">Application Received</h2>
-          <p style="color:#d6d6d6;font-size:16px;line-height:1.8;margin:0 auto 28px">Thank you for applying to become a NOIR STRANDS Brand Partner.</p>
-          <p style="color:#c8c8c8;font-size:15px;line-height:1.8;margin:0 auto 25px">Your application is being processed and will be reviewed by our team.</p>
-          <p style="color:#c8c8c8;font-size:15px;line-height:1.8;margin:0 auto 30px">If selected, we will contact you using the information provided in your application.</p>
-          <div style="color:#c9a24d;letter-spacing:3px;font-size:12px;margin-top:30px">NOIR STRANDS TEAM</div>
-          <div style="color:#777;letter-spacing:3px;font-size:9px;margin-top:18px">LUXURY · CONFIDENCE · INDIVIDUALITY</div>
-        </div>
-      </div>`;
-
-    section.scrollIntoView({behavior:"smooth",block:"start"});
-  }
 })();
 </script>
 
