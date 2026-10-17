@@ -17,7 +17,28 @@ const products=[
 const cats=['All styles','Pixie Cut','Pixie Curls','Bone Straight','Body Wave','Deep Wave','Water Wave','Loose Wave','Kinky Curly','Kinky Straight','Jerry Curl','Loose Deep Waves','Straight Bob','Curly Bob','Burmese Curly','Bob Wig','Jerry Straight','Deep Curly','Afro Kinky'];
 let cart=JSON.parse(localStorage.cart||'[]'), saved=JSON.parse(localStorage.saved||'[]');
 const chips=document.querySelector('#chips'); cats.forEach((c,i)=>{let b=document.createElement('button');b.className='chip'+(i===0?' active':'');b.textContent=c;b.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(c==='All styles'?'':c)};chips.appendChild(b)});
-function render(filter=''){const q=(document.querySelector('#search').value||'').toLowerCase();let list=products.filter(p=>(!filter||p[0]===filter)&&(!q||p[0].toLowerCase().includes(q)));document.querySelector('#products').innerHTML=list.map((p,i)=>`<article class="product"><img class="product-img" ${p[0]==='Pixie Cut'?'data-slides="/noir-strands/2F4B1925-05C6-4A60-A163-5BB1E694B9BC.png|/noir-strands/5C67CEE6-3B7A-43F7-AB7B-94653487040D.png|/noir-strands/IMG_0801.jpeg" data-slide-index="0"':''} src="${p[0]==='Pixie Cut'?'/noir-strands/2F4B1925-05C6-4A60-A163-5BB1E694B9BC.png':p[6]}" alt="${p[0]} wig" loading="lazy" decoding="async" onerror="this.onerror=null;this.style.display='none'"><span class="badge">${p[5]}</span><small>${p[5].toUpperCase()}</small><h3>${p[1]}</h3><div class="meta">${p[1]}<br>● ${p[3]} · ${p[4]}</div><div class="price">${p[2]}</div><select><option>${p[3]}</option></select><select><option>${p[4]}</option></select><button class="add" onclick="addCart(${i},'${filter}')">ADD TO CART</button></article>`).join('');if(window.pixieSlideshowTimer)clearInterval(window.pixieSlideshowTimer);window.pixieSlideshowTimer=setInterval(()=>{document.querySelectorAll('img[data-slides]').forEach(img=>{const slides=img.dataset.slides.split('|');let current=Number(img.dataset.slideIndex||0);let next=(current+1)%slides.length;img.dataset.slideIndex=String(next);img.onerror=()=>{img.onerror=null;console.error('Pixie slideshow image failed:',slides[next])};img.src=slides[next]})},2000)}
+function render(filter=''){
+ const q=(document.querySelector('#search').value||'').toLowerCase();
+ const list=products.filter(p=>(!filter||p[0]===filter)&&(!q||p[0].toLowerCase().includes(q)));
+ document.querySelector('#products').innerHTML=list.map((p,i)=>{
+  const isPixie=p[0]==='Pixie Cut';
+  const slides=['2F4B1925-05C6-4A60-A163-5BB1E694B9BC.png','5C67CEE6-3B7A-43F7-AB7B-94653487040D.png','IMG_0801.jpeg'];
+  const imageList=isPixie?slides.map(name=>'/noir-strands/'+name):[];
+  const attrs=isPixie?'data-slides="'+imageList.join('|')+'" data-slide-index="0"':'';
+  return `<article class="product"><img class="product-img" ${attrs} src="${isPixie?imageList[0]:p[6]}" alt="${p[0]} wig" loading="eager" decoding="async"><span class="badge">${p[5]}</span><small>${p[5].toUpperCase()}</small><h3>${p[1]}</h3><div class="meta">${p[1]}<br>● ${p[3]} · ${p[4]}</div><div class="price">${p[2]}</div><select><option>${p[3]}</option></select><select><option>${p[4]}</option></select><button class="add" onclick="addCart(${i},'${filter}')">ADD TO CART</button></article>`;
+ }).join('');
+ if(window.pixieSlideshowTimer)clearInterval(window.pixieSlideshowTimer);
+ window.pixieSlideshowTimer=setInterval(()=>{
+  document.querySelectorAll('img[data-slides]').forEach(img=>{
+   const slides=img.dataset.slides.split('|');
+   const next=(Number(img.dataset.slideIndex||0)+1)%slides.length;
+   const preload=new Image();
+   preload.onload=()=>{img.src=slides[next];img.dataset.slideIndex=String(next);};
+   preload.onerror=()=>console.error('Pixie Cut slide failed to load:',slides[next]);
+   preload.src=slides[next];
+  });
+ },2000);
+}
 function currentList(filter){const q=(document.querySelector('#search').value||'').toLowerCase();return products.filter(p=>(!filter||p[0]===filter)&&(!q||p[0].toLowerCase().includes(q)))}
 window.addCart=(i,filter)=>{let p=currentList(filter)[i];cart.push(p);localStorage.cart=JSON.stringify(cart);update()};
 function update(){document.querySelector('#cartCount').textContent=cart.length;document.querySelector('#savedCount').textContent=saved.length;document.querySelector('#cartItems').innerHTML=cart.map((p,i)=>`<div class="cart-row"><span>${p[1]}</span><b>$${p[2]}</b></div>`).join('')||'<p>Your bag is empty.</p>';document.querySelector('#cartTotal').textContent=cart.length?'Items selected: '+cart.length:''}
