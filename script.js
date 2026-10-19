@@ -25,7 +25,7 @@ function render(filter=''){
   const slides=['2F4B1925-05C6-4A60-A163-5BB1E694B9BC.png','5C67CEE6-3B7A-43F7-AB7B-94653487040D.png','IMG_0801.jpeg'];
   const imageList=isPixie?slides.map(name=>'/noir-strands/'+name):[];
   const attrs=isPixie?'data-slides="'+imageList.join('|')+'" data-slide-index="0"':'';
-  return `<article class="product"><img class="product-img" ${attrs} src="${isPixie?imageList[0]:p[6]}" alt="${p[0]} wig" loading="eager" decoding="async"><span class="badge">${p[5]}</span><small>${p[5].toUpperCase()}</small><h3>${p[1]}</h3><div class="meta">${p[1]}<br>● ${p[3]} · ${p[4]}</div><div class="price">${p[2]}</div><select><option>${p[3]}</option></select><select><option>${p[4]}</option></select><button class="add" onclick="addCart(${i},'${filter}')">ADD TO CART</button></article>`;
+  return `<article class="product"><img class="product-img" ${attrs} src="${isPixie?imageList[0]:p[6]}" alt="${p[0]} wig" loading="eager" decoding="async"><span class="badge">${p[5]}</span><small>${p[5].toUpperCase()}</small><h3>${p[1]}</h3><div class="meta">${p[1]}<br>● ${p[3]} · ${p[4]}</div><div class="price">$${p[2]}</div><select><option>${p[3]}</option></select><select><option>${p[4]}</option></select><button class="add" onclick="addCart(${i},'${filter}')">ADD TO CART</button></article>`;
  }).join('');
  if(window.pixieSlideshowTimer)clearInterval(window.pixieSlideshowTimer);
  window.pixieSlideshowTimer=setInterval(()=>{
