@@ -26,10 +26,12 @@ function render(filter=''){
   const isBodyWave=p[0]==='Body Wave';
   const isStraightBob=p[0]==='Straight Bob';
   const isWaterWave=p[0]==='Water Wave';
+  const isWaterWave=p[0]==='Water Wave';
   const bobColors=['Copper Orange','Auburn Brown','Dark Chocolate Brown','Natural Black'];
   const slides=['2F4B1925-05C6-4A60-A163-5BB1E694B9BC.png','5C67CEE6-3B7A-43F7-AB7B-94653487040D.png','IMG_0801.jpeg'];
   const curlsSlides=['IMG_0857.webp','IMG_0856.webp'];
   const deepWaveSlides=['temp_image_3C634754-F18F-469F-AB28-25B1D857BBDA.jpeg','IMG_0865.jpeg'];
+  const waterWaveSlides=['IMG_0881.jpeg','IMG_0880.jpeg'];
   const waterWaveSlides=['IMG_0881.jpeg','IMG_0880.jpeg'];
   const imageList=isPixie?slides.map(name=>'/noir-strands/'+name):(isPixieCurls?curlsSlides.map(name=>'/noir-strands/'+name):(isBodyWave?deepWaveSlides.map(name=>'/noir-strands/'+name):(isWaterWave?waterWaveSlides.map(name=>'/noir-strands/'+name):[])));
   const attrs=(isPixie||isPixieCurls||isBodyWave||isWaterWave)?'data-slides="'+imageList.join('|')+'" data-slide-index="0"':'';
