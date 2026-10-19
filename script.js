@@ -27,9 +27,25 @@ function render(filter=''){
   const attrs=isPixie?'data-slides="'+imageList.join('|')+'" data-slide-index="0"':'';
   return `<article class="product"><img class="product-img" ${attrs} src="${isPixie?imageList[0]:p[6]}" alt="${p[0]} wig" loading="eager" decoding="async"><span class="badge">${p[5]}</span><small>${p[5].toUpperCase()}</small><h3>${p[1]}</h3><div class="meta">${p[1]}<br>● ${p[3]} · ${p[4]}</div><div class="price">$${p[2]}</div>${isPixie?'<select class="color-select"><option>Natural Black</option><option>Gold</option><option>Auburn Copper</option></select>':'<select><option>'+p[3]+'</option></select>'}<select><option>${p[4]}</option></select><button class="add" onclick="addCart(${i},'${filter}')">ADD TO CART</button></article>`;
  }).join('');
+ // When a customer selects a Pixie Cut colour, show that colour's image and
+ // keep it visible so the selected option and displayed wig stay in sync.
+ document.querySelectorAll('.product').forEach(card=>{
+  const img=card.querySelector('img[data-slides]');
+  const select=card.querySelector('.color-select');
+  if(!img||!select)return;
+  select.addEventListener('change',()=>{
+   const slides=img.dataset.slides.split('|');
+   const selected=select.selectedIndex;
+   const preload=new Image();
+   preload.onload=()=>{img.src=slides[selected];img.dataset.slideIndex=String(selected);img.dataset.manualSelection='true';};
+   preload.onerror=()=>console.error('Pixie Cut colour image failed to load:',slides[selected]);
+   preload.src=slides[selected];
+  });
+ });
  if(window.pixieSlideshowTimer)clearInterval(window.pixieSlideshowTimer);
  window.pixieSlideshowTimer=setInterval(()=>{
   document.querySelectorAll('img[data-slides]').forEach(img=>{
+   if(img.dataset.manualSelection==='true')return;
    const slides=img.dataset.slides.split('|');
    const next=(Number(img.dataset.slideIndex||0)+1)%slides.length;
    const preload=new Image();
