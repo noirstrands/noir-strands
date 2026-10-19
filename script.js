@@ -48,7 +48,7 @@ function render(filter=''){
   else if(isBurmeseCurly) colorOptions='<select class="color-select"><option>Natural Black</option></select>';
   else if(isStraightBob) colorOptions='<select class="color-select">'+bobColors.map(color=>'<option>'+color+'</option>').join('')+'</select>';
   const lengthOptions=p[4] ? '<select><option>'+p[4]+'</option></select>' : '';
-  return `<article class="product"><img class="product-img" ${attrs} src="${(isPixie||isPixieCurls||isBodyWave||isWaterWave||isLooseDeepWaves||isCurlyBob)?imageList[0]:p[6]}" alt="${p[0]} wig" loading="eager" decoding="async">${hideLaceLabel?'':'<span class="badge">'+p[5]+'</span><small>'+p[5].toUpperCase()+'</small>'}<h3>${p[1]}</h3><div class="meta">${p[1]}<br>● ${p[3]}${p[4] ? ' · '+p[4] : ''}</div><div class="price">$ ${p[2]}</div>${colorOptions}${lengthOptions}<button class="add" onclick="addCart(${i},'${filter}')">ADD TO CART</button></article>`;
+  return `<article class="product"><img class="product-img" ${attrs} src="${(isPixie||isPixieCurls||isBodyWave||isWaterWave||isLooseDeepWaves||isCurlyBob||isBurmeseCurly)?imageList[0]:p[6]}" alt="${p[0]} wig" loading="eager" decoding="async">${hideLaceLabel?'':'<span class="badge">'+p[5]+'</span><small>'+p[5].toUpperCase()+'</small>'}<h3>${p[1]}</h3><div class="meta">${p[1]}<br>● ${p[3]}${p[4] ? ' · '+p[4] : ''}</div><div class="price">$ ${p[2]}</div>${colorOptions}${lengthOptions}<button class="add" onclick="addCart(${i},'${filter}')">ADD TO CART</button></article>`;
  }).join('');
  // Selecting a colour displays its matching image and pauses rotation for that card.
  document.querySelectorAll('.product').forEach(card=>{
