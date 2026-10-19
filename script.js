@@ -1,7 +1,7 @@
 const products=[
 ['Pixie Cut','Pixie Cut',191,'Natural Black','8 inch','HD Lace','pixie-cut.jpg'],
 ['Pixie Curls','Pixie Curls',222,'Espresso','12 inch','Transparent Lace','pixie-curls.jpg'],
-['Bone Straight','Bone Straight',253,'Honey Blonde','16 inch','4x4 Closure','bone-straight.jpg'],
+['Bone Straight','Bone Straight',253,'Natural Black','16 inch','','bone-straight.jpg'],
 ['Body Wave','Body Wave',283,'Burgundy','20 inch','5x5 Closure','body-wave-card.jpg'],
 ['Deep Wave','Deep Wave',314,'Pink','24 inch','13x4 Lace Front','deep-wave.jpg'],
 ['Water Wave','Water Wave',344,'Blonde','30 inch','HD Lace','water-wave.jpg'],
@@ -27,7 +27,8 @@ function render(filter=''){
   const curlsSlides=['IMG_0857.webp','IMG_0856.webp'];
   const imageList=isPixie?slides.map(name=>'/noir-strands/'+name):(isPixieCurls?curlsSlides.map(name=>'/noir-strands/'+name):[]);
   const attrs=(isPixie||isPixieCurls)?'data-slides="'+imageList.join('|')+'" data-slide-index="0"':'';
-  return `<article class="product"><img class="product-img" ${attrs} src="${isPixie?imageList[0]:p[6]}" alt="${p[0]} wig" loading="eager" decoding="async"><span class="badge">${p[5]}</span><small>${p[5].toUpperCase()}</small><h3>${p[1]}</h3><div class="meta">${p[1]}<br>● ${p[3]} · ${p[4]}</div><div class="price">$${p[2]}</div>${isPixie?'<select class="color-select"><option>Natural Black</option><option>Gold</option><option>Auburn Copper</option></select>':'<select><option>'+p[3]+'</option></select>'}<select><option>${p[4]}</option></select><button class="add" onclick="addCart(${i},'${filter}')">ADD TO CART</button></article>`;
+  const hideLaceLabel=p[0]==='Bone Straight';
+  return `<article class="product"><img class="product-img" ${attrs} src="${isPixie?imageList[0]:p[6]}" alt="${p[0]} wig" loading="eager" decoding="async">${hideLaceLabel?'':'<span class="badge">'+p[5]+'</span><small>'+p[5].toUpperCase()+'</small>'}<h3>${p[1]}</h3><div class="meta">${p[1]}<br>● ${p[3]} · ${p[4]}</div><div class="price">$${p[2]}</div>${isPixie?'<select class="color-select"><option>Natural Black</option><option>Gold</option><option>Auburn Copper</option></select>':'<select><option>'+p[3]+'</option></select>'}<select><option>${p[4]}</option></select><button class="add" onclick="addCart(${i},'${filter}')">ADD TO CART</button></article>`;
  }).join('');
  // When a customer selects a Pixie Cut colour, show that colour's image and
  // keep it visible so the selected option and displayed wig stay in sync.
