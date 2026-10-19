@@ -22,9 +22,11 @@ function render(filter=''){
  const list=products.filter(p=>(!filter||p[0]===filter)&&(!q||p[0].toLowerCase().includes(q)));
  document.querySelector('#products').innerHTML=list.map((p,i)=>{
   const isPixie=p[0]==='Pixie Cut';
+  const isPixieCurls=p[0]==='Pixie Curls';
   const slides=['2F4B1925-05C6-4A60-A163-5BB1E694B9BC.png','5C67CEE6-3B7A-43F7-AB7B-94653487040D.png','IMG_0801.jpeg'];
-  const imageList=isPixie?slides.map(name=>'/noir-strands/'+name):[];
-  const attrs=isPixie?'data-slides="'+imageList.join('|')+'" data-slide-index="0"':'';
+  const curlsSlides=['IMG_0857.webp','IMG_0856.webp'];
+  const imageList=isPixie?slides.map(name=>'/noir-strands/'+name):(isPixieCurls?curlsSlides.map(name=>'/noir-strands/'+name):[]);
+  const attrs=(isPixie||isPixieCurls)?'data-slides="'+imageList.join('|')+'" data-slide-index="0"':'';
   return `<article class="product"><img class="product-img" ${attrs} src="${isPixie?imageList[0]:p[6]}" alt="${p[0]} wig" loading="eager" decoding="async"><span class="badge">${p[5]}</span><small>${p[5].toUpperCase()}</small><h3>${p[1]}</h3><div class="meta">${p[1]}<br>● ${p[3]} · ${p[4]}</div><div class="price">$${p[2]}</div>${isPixie?'<select class="color-select"><option>Natural Black</option><option>Gold</option><option>Auburn Copper</option></select>':'<select><option>'+p[3]+'</option></select>'}<select><option>${p[4]}</option></select><button class="add" onclick="addCart(${i},'${filter}')">ADD TO CART</button></article>`;
  }).join('');
  // When a customer selects a Pixie Cut colour, show that colour's image and
