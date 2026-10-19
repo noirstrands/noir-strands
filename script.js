@@ -4,7 +4,7 @@ const products=[
 ['Bone Straight','Bone Straight',139,'Natural Black','16 inch','','DD67239A-8B14-4DB1-BAB3-6D5982B589BD.png'],
 ['Body Wave','Body Wave',283,'Burgundy','20 inch','5x5 Closure','body-wave-card.jpg'],
 ['Deep Wave','Deep Wave',314,'Natural Black','','13x4 Lace Front','E7991C70-6C31-4265-B47F-29089799952B.png'],
-['Water Wave','Water Wave',344,'Natural Black','5x5','HD Lace','IMG_0881.jpeg'],
+['Water Wave','Water Wave',129,'Natural Black','5x5','HD Lace','IMG_0881.jpeg'],
 ['Loose Deep Waves','Loose Deep Waves',497,'Burgundy','20 inch','HD Lace','loose-deep-1.jpg'],
 ['Straight Bob','Straight Bob',120,'Copper Orange','','Transparent Lace','04AABB70-9A50-4222-AC37-11C838CCB456.png'],
 ['Curly Bob','Curly Bob',245,'Blonde','30 inch','4x4 Closure','curly-bob.jpg'],
