@@ -60,7 +60,13 @@
   <form id="creatorForm" action="https://script.google.com/macros/s/AKfycbwv3CFI68bHd3zCn7gi1MZ0Vd6sK_MfW4VLz-l7g8oNPXRv1MaBywb0cD1-TlaeL6y4/exec" method="POST" target="hiddenSubmitFrame">
     <label>1. First and last name *<input name="name" required placeholder="First and last name"></label>
     <label>2. Email address *<input name="email" type="email" required placeholder="Email address"></label>
-    <label>3. Home address for shipping *<textarea name="shipping_address" required placeholder="Home address for shipping"></textarea></label>
+  <label>3. Home address for shipping *
+  <input name="shipping_street" required placeholder="Street Name" autocomplete="street-address">
+  <input name="shipping_city" required placeholder="City" autocomplete="address-level2">
+  <input name="shipping_state" required placeholder="State" autocomplete="address-level1">
+  <input name="shipping_zip" required placeholder="ZIP Code" autocomplete="postal-code">
+  <input type="hidden" name="shipping_address" id="shippingAddressCombined">
+</label>
     <label>4. Phone number *<input name="phone" required placeholder="Phone number"></label>
     <label>5. TikTok username *<input name="tiktok_username" required placeholder="TikTok username"></label>
 
@@ -132,6 +138,15 @@
 
   let isSubmitting = false;
   let responseTimeout;
+  form.addEventListener("submit", function () {
+  const street = form.querySelector('[name="shipping_street"]').value.trim();
+  const city = form.querySelector('[name="shipping_city"]').value.trim();
+  const state = form.querySelector('[name="shipping_state"]').value.trim();
+  const zip = form.querySelector('[name="shipping_zip"]').value.trim();
+
+  form.querySelector('[name="shipping_address"]').value =
+    [street, city, state, zip].join(", ");
+});
 
   // Ignore the iframe's initial blank-page load. Redirect after the form
   // submission has started and a response has loaded into the iframe.
